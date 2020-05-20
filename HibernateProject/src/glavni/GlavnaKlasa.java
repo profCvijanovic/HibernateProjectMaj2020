@@ -22,6 +22,13 @@ public class GlavnaKlasa {
 			try {
 				//preuzimam usera ciji je id = 3;
 				user = sesija.get(User.class, 3);
+				
+				// setujemvrednost polja password
+				user.setPassword("lala12345");
+				
+				// radim update u bazi
+				sesija.update(user);
+				
 				// zatvorena uspesna transakcija
 				sesija.getTransaction().commit();
 			}catch (Exception e) {
