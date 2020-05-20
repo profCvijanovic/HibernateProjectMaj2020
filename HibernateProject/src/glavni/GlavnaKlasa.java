@@ -23,11 +23,8 @@ public class GlavnaKlasa {
 				//preuzimam usera ciji je id = 3;
 				user = sesija.get(User.class, 3);
 				
-				// setujemvrednost polja password
-				user.setPassword("lala12345");
-				
-				// radim update u bazi
-				sesija.update(user);
+				//brisem usera
+				sesija.delete(user);
 				
 				// zatvorena uspesna transakcija
 				sesija.getTransaction().commit();
@@ -38,7 +35,7 @@ public class GlavnaKlasa {
 		// zatvaram sesiju
 		sesija.close();
 		
-		System.out.println(user.getUserName() + " " + user.getPassword());
+		//System.out.println(user.getUserName() + " " + user.getPassword());
 		
 		
 
