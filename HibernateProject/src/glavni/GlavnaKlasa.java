@@ -9,23 +9,19 @@ import model.User;
 public class GlavnaKlasa {
 
 	public static void main(String[] args) {
-			
+		
+		//tranzijentni objekat
 		User user = new User();
-		user.setUserName("nenad");
-		user.setPassword("nenad123");
-	
+
 		// napravili smo fabriku sesija, Session factory
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		// potrazujem sesiju iz fabrike
 		Session sesija = factory.openSession();
 			//ovde zapocinje transakcija
 			sesija.beginTransaction();
-		
 			try {
-				
-				// insert u bazu
-				sesija.persist(user);
-				System.out.println("Uspesno je dodat user u bazu");
+				//preuzimam usera ciji je id = 3;
+				user = sesija.get(User.class, 3);
 				// zatvorena uspesna transakcija
 				sesija.getTransaction().commit();
 			}catch (Exception e) {
