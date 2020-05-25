@@ -1,13 +1,19 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +40,11 @@ public class User {
 	private boolean daLiJeBioNaStranici;
 	@Embedded
 	private Adresa adresa;
+	@ElementCollection(fetch = FetchType.LAZY)
+	@JoinTable(name = "kontakti_korisnika",
+			   joinColumns = @JoinColumn(name = "user_id")
+	)
+	private List<Kontakt> kontakti = new ArrayList<Kontakt>();
 	
 	public int getIdUser() {
 		return idUser;
@@ -77,5 +88,13 @@ public class User {
 	public void setAdresa(Adresa adresa) {
 		this.adresa = adresa;
 	}
+	public List<Kontakt> getKontakti() {
+		return kontakti;
+	}
+	public void setKontakti(List<Kontakt> kontakti) {
+		this.kontakti = kontakti;
+	}
+	
+	
 		
 }

@@ -1,11 +1,13 @@
 package controller;
 
-import dao.hibernate.HibernateDAO;
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Adresa;
+import model.Kontakt;
 import model.User;
 import servis.HibernateService;
-import setovanja.SetovanjeModela;
-import validacija.ValidacijaUnosa;
+
 
 public class GlavnaKlasa {
 
@@ -18,17 +20,30 @@ public class GlavnaKlasa {
 		String ponovljeniPassword = "nenad123";
 		String description = "neki opis";
 		
-		Adresa adresa = new Adresa();
-			adresa.setDrzava("Srbija");
-			adresa.setGrad("Beograd");
-			adresa.setUlica("Gandijeva");
-			adresa.setPostanskiBroj(11070);
+		String drzava = "Srbija";
+		String grad = "Beograd";
+		String ulica = "Srpskih vladara";
+		int postanskiBroj = 11000;
+		
+		List<Kontakt> kontakti = new ArrayList<Kontakt>();
+	
+			
 		boolean proveriPass = service.proveriPassworde(password, ponovljeniPassword);
 		
 		if(proveriPass) {
-			User user = service.setUser(userName, password, description,adresa);
+			kontakti = service.setKontakte();
+			Adresa adresa = service.setAdresa(drzava,grad,ulica,postanskiBroj);
+			User user = service.setUser(userName, password, description,adresa,kontakti);
 			service.saveUser(user);
 		}
+		
+		int id = 1;
+		User user = service.getUserFromDB(id);
+		
+		System.out.println("User:" + user.getUserName());
+		System.out.println("Ulica:" + user.getAdresa().getUlica());
+		System.out.println("Fiksni:" + user.getKontakti().get(0).getFiksniTelefon());
+		
 
 	
 	
