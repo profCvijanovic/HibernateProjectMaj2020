@@ -34,6 +34,9 @@
 		<mapping class="model.Proizvodjac"/>
 		<mapping class="model.Racun"/>
 		<mapping class="model.Prodavnica"/>
+		<mapping class="model.Kupac"/>
+		<mapping class="model.FizickoLice"/>
+		<mapping class="model.PravnoLice"/>
 		
 	</session-factory>
 </hibernate-configuration>

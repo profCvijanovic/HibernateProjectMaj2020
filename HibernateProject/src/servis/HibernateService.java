@@ -4,7 +4,10 @@ import java.util.List;
 
 import dao.hibernate.HibernateDAO;
 import model.Adresa;
+import model.FizickoLice;
 import model.Kontakt;
+import model.Kupac;
+import model.PravnoLice;
 import model.Prodavnica;
 import model.Proizvod;
 import model.Proizvodjac;
@@ -63,6 +66,25 @@ public class HibernateService {
 	}
 	public void saveProdavnica(Prodavnica prodavnica) {
 		dao.saveProdavnica(prodavnica);
+	}
+	public Kupac setKupac(double balance) {
+		return setovanje.setKupac(balance);
+	}
+	public void saveKupac(Kupac kupac) {
+		dao.saveKupac(kupac);	
+	}
+	public FizickoLice setFizickoLice(double balanceFizicko, String jmbg) {
+		return setovanje.setFizickoLice(balanceFizicko,jmbg);
+	}
+	public void saveFizickoLice(FizickoLice fizickoLice) {
+		dao.saveFizickoLice(fizickoLice);
+		
+	}
+	public PravnoLice setPravnoLice(double balancePravno, String pib) {
+		return setovanje.setPravnoLice(balancePravno,pib);
+	}
+	public void savePravnoLice(PravnoLice pravnoLice) {
+		dao.savePravnoLice(pravnoLice);		
 	}
 	
 	

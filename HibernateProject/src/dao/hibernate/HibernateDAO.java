@@ -4,6 +4,9 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import model.FizickoLice;
+import model.Kupac;
+import model.PravnoLice;
 import model.Prodavnica;
 import model.Proizvod;
 import model.Proizvodjac;
@@ -114,6 +117,57 @@ public class HibernateDAO {
 		}
 		
 	}
+
+	public void saveKupac(Kupac kupac) {
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(kupac);
+			sesija.getTransaction().commit();
+			System.out.println("Kupac snimljen u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Kupac nije snimljen u bazu");
+		}finally {
+			sesija.close();
+		}	
+	}
+
+	public void saveFizickoLice(FizickoLice fizickoLice) {
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(fizickoLice);
+			sesija.getTransaction().commit();
+			System.out.println("Fizicko lice snimljeno u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Fizicko lice  nije snimljeno u bazu");
+		}finally {
+			sesija.close();
+		}
+	}
+
+	public void savePravnoLice(PravnoLice pravnoLice) {
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(pravnoLice);
+			sesija.getTransaction().commit();
+			System.out.println("Pravno lice snimljeno u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Pravno lice  nije snimljeno u bazu");
+		}finally {
+			sesija.close();
+		}
+		
+	}
+	
+	
+	
+	
+	
 	
 
 }

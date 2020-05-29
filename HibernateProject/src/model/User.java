@@ -46,7 +46,7 @@ public class User {
 			   joinColumns = @JoinColumn(name = "user_id")
 	)
 	private List<Kontakt> kontakti = new ArrayList<Kontakt>();
-	@ManyToMany
+	@ManyToMany(mappedBy = "korisnici" )
 	private List<Prodavnica> pretplataNaProdavnice = new ArrayList<Prodavnica>();
 	
 	public int getIdUser() {

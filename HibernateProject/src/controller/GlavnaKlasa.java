@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Adresa;
+import model.FizickoLice;
 import model.Kontakt;
+import model.Kupac;
+import model.PravnoLice;
 import model.Prodavnica;
 import model.Proizvod;
 import model.Proizvodjac;
@@ -58,6 +61,17 @@ public class GlavnaKlasa {
 		String imeProdavnice2 = "noidea";
 		List<User> useri2 = new ArrayList<User>();
 		
+		// podaci o kupcu
+		double balance = 1000;
+		
+		// podaci o fizickom licu
+		double balanceFizicko = 5000;
+		String jmbg = "0402987710129";
+		
+		// podaci o pravnom licu
+		double balancePravno = 10000;
+		String pib = "11223344";
+		
 		boolean proveriPass = service.proveriPassworde(password, ponovljeniPassword);
 		
 		if(proveriPass) {
@@ -88,6 +102,17 @@ public class GlavnaKlasa {
 			Prodavnica prodavnica2 = service.setProdavnica(imeProdavnice2,useri2);
 			service.saveProdavnica(prodavnica);
 			service.saveProdavnica(prodavnica2);
+			// kupac
+			Kupac kupac = service.setKupac(balance);
+			service.saveKupac(kupac);
+			// fizicko lice
+			FizickoLice fizickoLice = service.setFizickoLice(balanceFizicko,jmbg);
+			service.saveFizickoLice(fizickoLice);
+			// pravno lice
+			PravnoLice pravnoLice = service.setPravnoLice(balancePravno,pib);
+			service.savePravnoLice(pravnoLice);
+			
+			
 		}
 		
 		int id = 1;

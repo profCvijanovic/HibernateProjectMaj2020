@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import model.Adresa;
+import model.FizickoLice;
 import model.Kontakt;
+import model.Kupac;
+import model.PravnoLice;
 import model.Prodavnica;
 import model.Proizvod;
 import model.Proizvodjac;
@@ -93,6 +96,26 @@ public class SetovanjeModela {
 			prodavnica.setImeProdavnice(imeProdavnice);
 			prodavnica.setKorisnici(useri);
 		return prodavnica;
+	}
+
+	public Kupac setKupac(double balance) {
+		Kupac kupac = new Kupac();
+			kupac.setBalance(balance);
+		return kupac;
+	}
+
+	public FizickoLice setFizickoLice(double balanceFizicko, String jmbg) {
+		FizickoLice lice = new FizickoLice();
+			lice.setBalance(balanceFizicko);
+			lice.setJmbg(jmbg);
+		return lice;
+	}
+
+	public PravnoLice setPravnoLice(double balancePravno, String pib) {
+		PravnoLice lice = new PravnoLice();
+			lice.setBalance(balancePravno);
+			lice.setPib(pib);
+		return lice;
 	}
 	
 	
