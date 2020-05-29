@@ -3,6 +3,11 @@ package dao.hibernate;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import model.Prodavnica;
+import model.Proizvod;
+import model.Proizvodjac;
+import model.Racun;
 import model.User;
 
 public class HibernateDAO {
@@ -42,6 +47,71 @@ public class HibernateDAO {
 		}finally {
 			sesija.close();
 		}	
+		
+	}
+
+	public void saveProizvodjac(Proizvodjac proizvodjac) {
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(proizvodjac);
+			sesija.getTransaction().commit();
+			System.out.println("Proizvodjac snimljen u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Proizvodjac nije snimljen u bazu");
+		}finally {
+			sesija.close();
+		}		
+		
+	}
+
+	public void saveProizvod(Proizvod proizvod) {
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(proizvod);
+			sesija.getTransaction().commit();
+			System.out.println("Proizvod snimljen u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Proizvod nije snimljen u bazu");
+		}finally {
+			sesija.close();
+		}	
+		
+	}
+
+	public void saveRacun(Racun racun) {
+		
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(racun);
+			sesija.getTransaction().commit();
+			System.out.println("Racun snimljen u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Racun nije snimljen u bazu");
+		}finally {
+			sesija.close();
+		}
+		
+	}
+
+	public void saveProdavnica(Prodavnica prodavnica) {
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+		try {
+			sesija.save(prodavnica);
+			sesija.getTransaction().commit();
+			System.out.println("Prodavnica snimljena u bazu");
+		}catch (Exception e) {
+			sesija.getTransaction().rollback();
+			System.out.println("Prodavnica nije snimljena u bazu");
+		}finally {
+			sesija.close();
+		}
 		
 	}
 	

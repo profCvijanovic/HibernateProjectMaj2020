@@ -30,6 +30,10 @@
 		
 		<!-- Names the annotated entity class -->
 		<mapping class="model.User"/>
+		<mapping class="model.Proizvod"/>
+		<mapping class="model.Proizvodjac"/>
+		<mapping class="model.Racun"/>
+		<mapping class="model.Prodavnica"/>
 		
 	</session-factory>
 </hibernate-configuration>

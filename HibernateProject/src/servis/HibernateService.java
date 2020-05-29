@@ -5,6 +5,10 @@ import java.util.List;
 import dao.hibernate.HibernateDAO;
 import model.Adresa;
 import model.Kontakt;
+import model.Prodavnica;
+import model.Proizvod;
+import model.Proizvodjac;
+import model.Racun;
 import model.User;
 import setovanja.SetovanjeModela;
 import validacija.ValidacijaUnosa;
@@ -34,6 +38,31 @@ public class HibernateService {
 	}
 	public User getUserFromDB(int id) {
 		return dao.getUserFromDB(id);
+	}
+	public Proizvodjac setProizvodjac(String imeProizvodjaca) {
+		return setovanje.setProizvodjac(imeProizvodjaca);
+	}
+	public void saveProizvodjac(Proizvodjac proizvodjac) {
+		dao.saveProizvodjac(proizvodjac);
+	}
+	public Proizvod setProizvod(String nazivProizvoda, double cena, int popust, Proizvodjac proizvodjac) {
+		return setovanje.setProizvod(nazivProizvoda,cena,popust, proizvodjac);
+	}
+	public void saveProizvod(Proizvod proizvod) {
+		dao.saveProizvod(proizvod);
+	}
+	public Racun setRacun(String sifraRacuna, List<Proizvod> kupljeniProizvodi) {
+		return setovanje.setRacun(sifraRacuna,kupljeniProizvodi);
+	}
+	public void saveRacun(Racun racun) {
+		dao.saveRacun(racun);
+		
+	}
+	public Prodavnica setProdavnica(String imeProdavnice, List<User> useri) {
+		return setovanje.setProdavnica(imeProdavnice,useri);
+	}
+	public void saveProdavnica(Prodavnica prodavnica) {
+		dao.saveProdavnica(prodavnica);
 	}
 	
 	

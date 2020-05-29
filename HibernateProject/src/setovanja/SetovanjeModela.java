@@ -6,6 +6,10 @@ import java.util.List;
 
 import model.Adresa;
 import model.Kontakt;
+import model.Prodavnica;
+import model.Proizvod;
+import model.Proizvodjac;
+import model.Racun;
 import model.User;
 
 public class SetovanjeModela {
@@ -54,6 +58,41 @@ public class SetovanjeModela {
 		kontakti.add(kontakt2);
 		
 		return kontakti;
+	}
+
+	public Proizvodjac setProizvodjac(String imeProizvodjaca) {
+		
+		Proizvodjac proizvodjac = new Proizvodjac();
+		proizvodjac.setImeProizvodjaca(imeProizvodjaca);
+		
+		return proizvodjac;
+	}
+
+	public Proizvod setProizvod(String nazivProizvoda, double cena, int popust, Proizvodjac proizvodjac) {
+		
+		Proizvod proizvod = new Proizvod();
+			proizvod.setNazivProizvoda(nazivProizvoda);
+			proizvod.setCena(cena);
+			proizvod.setPopust(popust);
+			proizvod.setProizvodjac(proizvodjac);
+		
+		return proizvod;
+	}
+
+	public Racun setRacun(String sifraRacuna, List<Proizvod> kupljeniProizvodi) {
+		
+		Racun racun = new Racun();
+			 racun.setSifraRacuna(sifraRacuna);
+			 racun.setKupljeniProizvodi(kupljeniProizvodi);
+			
+		return racun;
+	}
+
+	public Prodavnica setProdavnica(String imeProdavnice, List<User> useri) {
+		Prodavnica prodavnica = new Prodavnica();
+			prodavnica.setImeProdavnice(imeProdavnice);
+			prodavnica.setKorisnici(useri);
+		return prodavnica;
 	}
 	
 	

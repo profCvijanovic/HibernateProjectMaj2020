@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,6 +46,8 @@ public class User {
 			   joinColumns = @JoinColumn(name = "user_id")
 	)
 	private List<Kontakt> kontakti = new ArrayList<Kontakt>();
+	@ManyToMany
+	private List<Prodavnica> pretplataNaProdavnice = new ArrayList<Prodavnica>();
 	
 	public int getIdUser() {
 		return idUser;
