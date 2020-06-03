@@ -1,7 +1,5 @@
 package model;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +15,7 @@ public class Kupac {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idKupac;
 	private double balance;
+	private String imeKupca;
 	
 	public int getIdKupac() {
 		return idKupac;
@@ -29,6 +28,12 @@ public class Kupac {
 	}
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+	public String getImeKupca() {
+		return imeKupca;
+	}
+	public void setImeKupca(String imeKupca) {
+		this.imeKupca = imeKupca;
 	}
 	
 	

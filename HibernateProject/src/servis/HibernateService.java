@@ -3,6 +3,7 @@ package servis;
 import java.util.List;
 
 import dao.hibernate.HibernateDAO;
+import dao.hibernate.HibernateHQLdao;
 import model.Adresa;
 import model.FizickoLice;
 import model.Kontakt;
@@ -21,6 +22,7 @@ public class HibernateService {
 	HibernateDAO dao = new HibernateDAO();
 	SetovanjeModela setovanje = new SetovanjeModela();
 	ValidacijaUnosa validacija = new ValidacijaUnosa();
+	HibernateHQLdao hqlDao = new HibernateHQLdao();
 	
 	public boolean proveriPassworde(String password, String ponovljeniPassword) {	
 		return validacija.proveriPassworde(password, ponovljeniPassword);
@@ -85,6 +87,18 @@ public class HibernateService {
 	}
 	public void savePravnoLice(PravnoLice pravnoLice) {
 		dao.savePravnoLice(pravnoLice);		
+	}
+	public void ubaciDesetKupaca() {
+		hqlDao.ubaciDesetKupaca();
+	}
+	public List<Kupac> preuzmiSveKupce() {
+		return hqlDao.preuzmiSveKupce();
+	}
+	public List<Kupac> kupciBalanceOdDo(String balanceOd, String balanceDo) {	
+		return hqlDao.kupciBalanceOdDo(balanceOd, balanceDo);
+	}
+	public double vratiBalanceAkoZnasIme(String imeKupca) {
+		return hqlDao.vratiBalanceAkoZnasIme(imeKupca);
 	}
 	
 	
